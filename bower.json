@@ -1,0 +1,12 @@
+{
+  "name": "snipTest",
+  "version": "0.0.0",
+  "authors": [
+    "Shad Beard"
+  ],
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "ace-builds": "b2f8bf1e745250596afea5b39c70b94421af906d"
+  }
+}
