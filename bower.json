@@ -8,6 +8,6 @@
   "private": true,
   "dependencies": {
     "ace-builds": "b2f8bf1e745250596afea5b39c70b94421af906d",
-    "ace-snippet-extension": "~0.0.1"
+    "ace-snippet-extension": "~0.0.2"
   }
 }
