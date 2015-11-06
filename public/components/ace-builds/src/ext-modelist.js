@@ -1,5 +1,5 @@
-define('ace/ext/modelist', ['require', 'exports', 'module' ], function(require, exports, module) {
-
+define("ace/ext/modelist",["require","exports","module"], function(require, exports, module) {
+"use strict";
 
 var modes = [];
 function getModeForPath(path) {
@@ -35,17 +35,18 @@ Mode.prototype.supportsFile = function(filename) {
 };
 var supportedModes = {
     ABAP:        ["abap"],
+    ABC:         ["abc"],
     ActionScript:["as"],
     ADA:         ["ada|adb"],
     Apache_Conf: ["^htaccess|^htgroups|^htpasswd|^conf|htaccess|htgroups|htpasswd"],
-    AsciiDoc:    ["asciidoc"],
-    Assembly_x86:["asm"],
+    AsciiDoc:    ["asciidoc|adoc"],
+    Assembly_x86:["asm|a"],
     AutoHotKey:  ["ahk"],
     BatchFile:   ["bat|cmd"],
+    C_Cpp:       ["cpp|c|cc|cxx|h|hh|hpp|ino"],
     C9Search:    ["c9search_results"],
-    C_Cpp:       ["cpp|c|cc|cxx|h|hh|hpp"],
     Cirru:       ["cirru|cr"],
-    Clojure:     ["clj"],
+    Clojure:     ["clj|cljs"],
     Cobol:       ["CBL|COB"],
     coffee:      ["coffee|cf|cson|^Cakefile"],
     ColdFusion:  ["cfm"],
@@ -55,12 +56,20 @@ var supportedModes = {
     D:           ["d|di"],
     Dart:        ["dart"],
     Diff:        ["diff|patch"],
+    Dockerfile:  ["^Dockerfile"],
     Dot:         ["dot"],
-    Erlang:      ["erl|hrl"],
+    Dummy:       ["dummy"],
+    DummySyntax: ["dummy"],
+    Eiffel:      ["e|ge"],
     EJS:         ["ejs"],
+    Elixir:      ["ex|exs"],
+    Elm:         ["elm"],
+    Erlang:      ["erl|hrl"],
     Forth:       ["frt|fs|ldr"],
     FTL:         ["ftl"],
+    Gcode:       ["gcode"],
     Gherkin:     ["feature"],
+    Gitignore:   ["^.gitignore"],
     Glsl:        ["glsl|frag|vert"],
     golang:      ["go"],
     Groovy:      ["groovy"],
@@ -70,17 +79,20 @@ var supportedModes = {
     haXe:        ["hx"],
     HTML:        ["html|htm|xhtml"],
     HTML_Ruby:   ["erb|rhtml|html.erb"],
+    HTML_Elixir: ["eex|html.eex"],
     INI:         ["ini|conf|cfg|prefs"],
+    Io:          ["io"],
     Jack:        ["jack"],
     Jade:        ["jade"],
     Java:        ["java"],
-    JavaScript:  ["js|jsm"],
+    JavaScript:  ["js|jsm|jsx"],
     JSON:        ["json"],
     JSONiq:      ["jq"],
     JSP:         ["jsp"],
     JSX:         ["jsx"],
     Julia:       ["jl"],
     LaTeX:       ["tex|latex|ltx|bib"],
+    Lean:        ["lean|hlean"],
     LESS:        ["less"],
     Liquid:      ["liquid"],
     Lisp:        ["lisp"],
@@ -91,19 +103,22 @@ var supportedModes = {
     LuaPage:     ["lp"],
     Lucene:      ["lucene"],
     Makefile:    ["^Makefile|^GNUmakefile|^makefile|^OCamlMakefile|make"],
-    MATLAB:      ["matlab"],
     Markdown:    ["md|markdown"],
+    Mask:        ["mask"],
+    MATLAB:      ["matlab"],
+    Maze:        ["mz"],
     MEL:         ["mel"],
-    MySQL:       ["mysql"],
     MUSHCode:    ["mc|mush"],
+    MySQL:       ["mysql"],
     Nix:         ["nix"],
     ObjectiveC:  ["m|mm"],
     OCaml:       ["ml|mli"],
     Pascal:      ["pas|p"],
     Perl:        ["pl|pm"],
     pgSQL:       ["pgsql"],
-    PHP:         ["php|phtml"],
+    PHP:         ["php|phtml|shtml|php3|php4|php5|phps|phpt|aw|ctp"],
     Powershell:  ["ps1"],
+    Praat:       ["praat|praatscript|psc|proc"],
     Prolog:      ["plg|prolog"],
     Properties:  ["properties"],
     Protobuf:    ["proto"],
@@ -116,39 +131,45 @@ var supportedModes = {
     SASS:        ["sass"],
     SCAD:        ["scad"],
     Scala:       ["scala"],
-    Smarty:      ["smarty|tpl"],
-    Scheme:      ["scm|rkt"],
+    Scheme:      ["scm|sm|rkt|oak|scheme"],
     SCSS:        ["scss"],
     SH:          ["sh|bash|^.bashrc"],
     SJS:         ["sjs"],
-    Space:       ["space"],
+    Smarty:      ["smarty|tpl"],
     snippets:    ["snippets"],
     Soy_Template:["soy"],
+    Space:       ["space"],
     SQL:         ["sql"],
+    SQLServer:   ["sqlserver"],
     Stylus:      ["styl|stylus"],
     SVG:         ["svg"],
+    Swift:       ["swift"],
     Tcl:         ["tcl"],
     Tex:         ["tex"],
     Text:        ["txt"],
     Textile:     ["textile"],
     Toml:        ["toml"],
-    Twig:        ["twig"],
+    Twig:        ["twig|swig"],
     Typescript:  ["ts|typescript|str"],
-    VBScript:    ["vbs"],
+    Vala:        ["vala"],
+    VBScript:    ["vbs|vb"],
     Velocity:    ["vm"],
     Verilog:     ["v|vh|sv|svh"],
-    XML:         ["xml|rdf|rss|wsdl|xslt|atom|mathml|mml|xul|xbl"],
+    VHDL:        ["vhd|vhdl"],
+    XML:         ["xml|rdf|rss|wsdl|xslt|atom|mathml|mml|xul|xbl|xaml"],
     XQuery:      ["xq"],
-    YAML:        ["yaml|yml"]
+    YAML:        ["yaml|yml"],
+    Django:      ["html"]
 };
 
 var nameOverrides = {
     ObjectiveC: "Objective-C",
     CSharp: "C#",
     golang: "Go",
-    C_Cpp: "C/C++",
+    C_Cpp: "C and C++",
     coffee: "CoffeeScript",
     HTML_Ruby: "HTML (Ruby)",
+    HTML_Elixir: "HTML (Elixir)",
     FTL: "FreeMarker"
 };
 var modesByName = {};
@@ -168,8 +189,6 @@ module.exports = {
 };
 
 });
-
-;
                 (function() {
                     window.require(["ace/ext/modelist"], function() {});
                 })();

@@ -7,8 +7,16 @@ editor.setTheme('ace/theme/monokai');
 var session = editor.getSession();
 session.setMode('ace/mode/javascript');
 
+// Example of defining your own snippet - Add it to the myCustomSnippetText var below.
+var randomSnippetText = [
+	"snippet myRandom",
+	"	console.log(\"RANDOM: ${1:}\")",
+	""
+].join(eol);
+
+
 // Concat together the built in extensions
-var myCustomSnippetText = JsExtensionSnippetText + angularSnippetText + ejsSnippetText;
+var myCustomSnippetText = randomSnippetText + JsExtensionSnippetText + angularSnippetText + ejsSnippetText;
 
 ace_snippets(editor, session, 'javascript', myCustomSnippetText);
 
